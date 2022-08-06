@@ -1,7 +1,7 @@
 <div>
     <div class="nav1"> Nived's Library App</div>
   
-  <ul class="nav justify-content-end">
+  <ul class="nav justify-content-end" *ngIf="!_auth.loggedIn()" >
         
       <li class="nav-item">
         <a class="nav-link active" routerLink="home">HOME</a>
@@ -11,6 +11,38 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" routerLink="login">LOGIN</a>
+      </li>
+      <li class="nav-item">
+        <!-- <a class="nav-link" *ngIf="_auth.loggedIn()" routerLink="login">ADD BOOKS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="_auth.loggedIn()" (click)="logoutUser()" routerLink="login">LOGOUT</a>
+      </li> -->
+      <!-- <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+      </li> -->
+    </ul>
+
+
+    <ul class="nav justify-content-end" *ngIf="_auth.loggedIn()" >
+        
+      <!-- <li class="nav-item">
+        <a class="nav-link active" routerLink="home">HOME</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!_auth.loggedIn()" routerLink="signup">SIGN UP</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!_auth.loggedIn()" routerLink="login">LOGIN</a>
+      </li> -->
+      <li class="nav-item">
+        <a class="nav-link active" routerLink="books">BOOKS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="_auth.loggedIn()" routerLink="addbook">ADD BOOKS</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="_auth.loggedIn()" (click)="logoutUser()" routerLink="login">LOGOUT</a>
       </li>
       <!-- <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

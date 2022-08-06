@@ -1,1 +1,14 @@
-<p>books works!</p>
+<div class="card" style="width: 18rem;" *ngFor='let book of Book'>
+    <img class="card-img-top" [src]='book.imageUrl' alt="Card image cap">
+    <div class="card-body">
+      <h5 class="card-title">Book name: {{book.name }}</h5>
+      <p class="card-text">Author name: {{book.authorName}}</p>
+      <p class="card-text">Book description: {{book.description}}</p>
+      <p class="card-text">Rating(5): {{book.starRating}}</p>
+      <button class="btn btn-warning" (click)="deleteBook(book)">Delete</button>
+      <button class="btn btn-warning" (click)="editbook(book)">Update</button>
+
+    </div>
+  </div>
+
+ 
