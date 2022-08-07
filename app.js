@@ -1,6 +1,4 @@
 const express = require("express");
-const path = require('path');
-
 const userData = require("./src/model/userData");
 const newBook = require("./src/model/newBook");
 const cors = require('cors');
@@ -17,13 +15,14 @@ app.use(bodyparser.json());
 
 const port = process.env.PORT || 8080;
 
-// Serve only the static files form the dist directory
-app.use(express.static('./frontend/dist/frontend'));
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/frontend/'}),
-);
+const path = require('path');
 
+
+app.use(express.static('public'));
+  app.get('*',(req,res)=>{
+    res.sendFile(path.join(__dirname,'public/index.html'));
+})
 
 function verifyToken(req,res,next)
 {
