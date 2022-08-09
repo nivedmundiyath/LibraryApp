@@ -26,6 +26,7 @@ app.use(express.static('public'));
 
 function verifyToken(req,res,next)
 {
+  console.log(req);
 
   if(!req.headers.authorization) {
     return res.status(401).send('Unauthorized request')
@@ -55,13 +56,15 @@ app.post('/login', (req, res) => {
           {
             res.status(500).send()
           }
-          if(!user)
+          else if(!user)
           {
             res.status(401).send('Invalid')
           }
+          else {
           let payload = {subject: mail+password}
           let token = jwt.sign(payload, 'secretKey')
           res.status(200).send({token})
+          }
 
 
                     })    
@@ -126,7 +129,9 @@ app.post('/login', (req, res) => {
 
     })
 
-    app.get('/books',verifyToken,function(req,res){
+    app.get('/allbooks',verifyToken,function(req,res){
+
+      console.log("Books here");
 
       newBook.find().then(function(books){
         console.log(books)
